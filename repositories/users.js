@@ -1,14 +1,18 @@
 const { User } = require('../models')
  module.exports = {
-   getAllUsers() {
-     return User.findAll()
+   getAllUsers() {  
+    return User.findAll();
    },
    // méthodes à implémenter
-   getUsers(offset = 0, limit = 10) { },
-   getAdmins() { },
+   getUsers(offset = 0, limit = 10) {
+     
+    },
+   getAdmins() {},
    getAuthors() { },
    getGuests(){ }, 
-   getUser(id) { },
+   getUser(id) {
+    
+    },
    getUserByEmail(email) { },
    addUser(user) { },
    updateUser() { },

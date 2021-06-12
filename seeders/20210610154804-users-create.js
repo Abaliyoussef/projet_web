@@ -6,7 +6,7 @@ userName: faker.internet.userName(),
     email: faker.internet.email(),
     
     password: faker.internet.password(8),
-    role: faker.name.jobTitle(),
+    role: faker.helpers.randomize([ 'admin', 'author', 'guest']),
     createdAt: new Date(),
     updatedAt: new Date()
   }
