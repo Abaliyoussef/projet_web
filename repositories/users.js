@@ -5,17 +5,29 @@ const { User } = require('../models')
    },
    // méthodes à implémenter
    getUsers(offset = 0, limit = 10) {
-     
+     return User.findAll({offset:parseInt(offset),limit:parseInt(limit)});
     },
-   getAdmins() {},
-   getAuthors() { },
-   getGuests(){ }, 
+   getAdmins() { return User.findAll({where:{role:"admin" }});},
+   getAuthors() { return User.findAll({where:{role:"author"}})},
+   getGuests(){ return User.findAll({where:{role:"guest"}})},
    getUser(id) {
-    
+    return User.findOne({ where:{ id:id } });
     },
-   getUserByEmail(email) { },
-   addUser(user) { },
-   updateUser() { },
-   deleteUser() { },
+   getUserByEmail(email) {return User.findOne({ where:{ email: email } }); },
+   addUser(user) { 
+     return User.create({
+       username: user.username,
+       email: user.email,
+       password:user.password,
+       role:user.role
+     })
+   },
+   updateUser(user) {
+     const userObj=User.findByPk(user.id);
+     return userObj.update({where : {id:user.id}});
+    },
+   deleteUser(id) { 
+     return User.destroy({where:{id:id}});
+   },
    // D'autres méthodes jugées utiles
  }
